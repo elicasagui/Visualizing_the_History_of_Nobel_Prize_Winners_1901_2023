@@ -32,7 +32,7 @@ Nobel_Prize_Winners/
   <h2>Installation</h2>
   <ol>
     <li>Clone the repository:<br>
-      <pre><code>git clone https://github.com/&lt;yourusername&gt;/Nobel_Prize_Winners.git
+      <pre><code>git clone https://github.com/elicasagui/Visualizing_the_History_of_Nobel_Prize_Winners_1901_2023.git
 cd Nobel_Prize_Winners
       </code></pre>
     </li>
