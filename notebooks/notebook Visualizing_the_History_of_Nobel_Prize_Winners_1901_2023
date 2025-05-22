@@ -8,28 +8,36 @@ import numpy as np
 
 df = pd.read_csv("../data/nobel.csv")
 
+
 #1 What is the most commonly awarded gender and birth country?
 #Store your answers as string variables top_gender and top_country.
-top_gender= df["sex"].mode()[0]
+top_gender= df["sex"].mode()[0] # use mode() to serch the common  gender and using 0 to indicate the value that im interested in.
 top_country= df['birth_country'].mode()[0]
-print([top_country, top_gender])
-print(df.columns)
+
+print(f"1)The most commonly awarded gender and birth country:{top_country}, {top_gender}")
+
+#grafic:
+plt.figure(figsize=(6, 4))
+sns.countplot(data=df, x='sex')
+plt.title('Count of Laureates by Gender')
+plt.xlabel('Gender')
+plt.ylabel('Number of Laureates')
+plt.tight_layout()
+plt.show()
 
 
 #2 Which decade had the highest ratio of US-born Nobel Prize winners to total winners in all categories?
 df["US_born_winners"]= df["birth_country"]== 'United States of America'
-print(df["US_born_winners"])
 
 df["decade"]= (np.floor(df["year"]/10)*10).astype(int) # np.floor se usa para redondear al numero hacia abajo mas cercano
-print(df["decade"])
 
 ratio_of_USwinners= df.groupby("decade", as_index=False)["US_born_winners"].mean()
-print(ratio_of_USwinners)
 
 max_decade_usa= ratio_of_USwinners[ratio_of_USwinners["US_born_winners"] == ratio_of_USwinners["US_born_winners"].max()]['decade'].values[0]
 
-print(max_decade_usa)
+print(f'2)The decade whith the highest ratio of US-born Nobel Prize winners to total winners in all categories is: {max_decade_usa}')
 
+#Grafic:
 ax1= sns.relplot(x="decade", y="US_born_winners", kind="line", data= df)
 
 plt.show()
@@ -38,37 +46,46 @@ plt.show()
 #3 Which decade and Nobel Prize category combination had the highest proportion of female laureates?
 
 df["female_winners"]= df["sex"]== 'Female'
-print(df["US_born_winners"])
-
-
 
 ratio_of_female_winners= df.groupby(["decade", 'category'], as_index=False)["female_winners"].mean()
-print(ratio_of_USwinners)
 
-max_female_decade_category = ratio_of_female_winners[ratio_of_female_winners['female_winners'] == ratio_of_female_winners['female_winners'].max()][['decade', 'category']]
+max_row = ratio_of_female_winners.loc[ratio_of_female_winners['female_winners'].idxmax()]
 
-max_female_dict= {max_female_decade_category['decade'].values[0]: max_female_decade_category['category'].values[0]}
+best_decade = int(max_row['decade'])
 
-print(max_female_dict)
+best_category = max_row['category']
+
+print(f"3)The decade with the highest proportion of female laureates was {best_decade} in the {best_category} category.")
+
+#Grafic
 
 ax2= sns.relplot(x='decade', y="female_winners", kind="line", data= df)
 
 plt.show()
 
 
-
-
-# Who was the first woman to receive a Nobel Prize, and in what category?
+#4 Who was the first woman to receive a Nobel Prize, and in what category?
 new_df= df[df["female_winners"]]
+
 min_row = new_df[new_df['year'] == new_df['year'].min()]
+
 first_woman_name=  min_row['full_name'].values[0]
+
 first_woman_category= new_df['category'].values[0]
-print(f"\n The first woman to win a Nobel Prize was {first_woman_name}, in the category of {first_woman_category}.")
 
-# Which individuals or organizations have won more than one Nobel Prize throughout the years?
+print(f"4)The first woman to win a Nobel Prize was {first_woman_name} in the category of {first_woman_category}.")
+
+#5 Which individuals or organizations have won more than one Nobel Prize throughout the years?
 
 
-counts= df['full_name'].value_counts()
-repeats= counts[counts >= 2].index
-repeat_list= list(repeats)
-print(repeat_list)
+repeat_counts = df['full_name'].value_counts()
+repeat_counts = repeat_counts[repeat_counts > 1]
+repeat_list = list(repeat_counts.index)
+print("5)Individuals or organizations that have won more than one Nobel Prize throughout the years:")
+for name, count in repeat_counts.items():
+    print(f"- {name}: {count} prizes")# it creates duplas
+
+#Grafic
+plt.figure()
+repeat_counts.plot(kind='bar')
+plt.show()
