@@ -1,4 +1,6 @@
 # src/visualize.py
+import matplotlib
+matplotlib.use('Agg')  # use non-interactive backend to suppress show() warnings
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -12,6 +14,7 @@ def plot_gender_count(df: pd.DataFrame):
     plt.ylabel("Number of Laureates")
     plt.tight_layout()
     plt.show()
+    plt.close()
 
 def plot_us_ratio(decade_df: pd.DataFrame):
     """Line plot of US-born laureate ratio by decade."""
@@ -22,6 +25,7 @@ def plot_us_ratio(decade_df: pd.DataFrame):
     plt.ylabel("Proportion US-born")
     plt.tight_layout()
     plt.show()
+    plt.close()
 
 def plot_female_ratio(female_df: pd.DataFrame):
     """Multi-line plot of female laureate ratio by decade & category."""
@@ -36,6 +40,7 @@ def plot_female_ratio(female_df: pd.DataFrame):
     plt.legend()
     plt.tight_layout()
     plt.show()
+    plt.close()
 
 def plot_multiple_winners(repeat_series: pd.Series):
     """Bar chart of individuals/organizations with >1 Nobel Prizes."""
@@ -47,3 +52,4 @@ def plot_multiple_winners(repeat_series: pd.Series):
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
     plt.show()
+    plt.close()
