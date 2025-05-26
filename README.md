@@ -14,7 +14,7 @@ Nobel_Prize_Winners/
 │   └──  novel.csv        # Original data files (e.g., nobel.csv)
 │    
 ├── notebooks/         # Jupyter notebooks for EDA and prototyping
-│   └── exploratory_analysis.ipynb
+│   └── Visualizing_the_History_of_Nobel_Prize_Winners_1901_2023.ipynb
 ├── src/               # Python source code
 │   ├── __init__.py    # Makes src a package
 │   ├── load_data.py   # Functions to load and validate data
