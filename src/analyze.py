@@ -3,7 +3,7 @@ import pandas as pd
 
 def most_common_gender_and_country(df: pd.DataFrame) -> tuple[str, str]:
     """
-    Return (top_gender, top_birth_country) by mode.
+    Return the most common gender and birth country as a tuple (gender, country).
     """
     top_gender = df["sex"].mode()[0]
     top_country = df["birth_country"].mode()[0]
@@ -11,23 +11,25 @@ def most_common_gender_and_country(df: pd.DataFrame) -> tuple[str, str]:
 
 def decade_us_ratio(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Return a DataFrame with 'decade' and mean of 'US_born'.
+    Return a DataFrame with columns 'decade' and the mean of the 'US_born' boolean flag.
     """
     return df.groupby("decade", as_index=False)["US_born"].mean()
 
 def decade_category_female_ratio(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Return a DataFrame with 'decade', 'category', and mean of 'female'.
+    Return a DataFrame with columns 'decade', 'category', and the mean of the 'female' boolean flag.
     """
-    return df.groupby(["decade","category"], as_index=False)["female"].mean()
+    return df.groupby(["decade", "category"], as_index=False)["female"].mean()
 
 def multiple_winners(df: pd.DataFrame) -> pd.Series:
     """
-    Return a Series of full_name counts where count > 1.
+    Return a pandas Series of counts for each 'full_name' that appears more than once.
+    The Series index will be the laureate name and its name attribute set to 'full_name'.
     """
     counts = df["full_name"].value_counts()
     result = counts[counts > 1]
-    # Clear index name and set series name to match expected output
+    # Ensure the Series index has no name and the Series is named 'full_name'
     result.index.name = None
     result.name = "full_name"
     return result
+
