@@ -33,7 +33,7 @@ Nobel_Prize_Winners/
   <ol>
     <li>Clone the repository:<br>
       <pre><code>git clone https://github.com/elicasagui/Visualizing_the_History_of_Nobel_Prize_Winners_1901_2023.git
-cd Nobel_Prize_Winners
+cd Visualizing_the_History_of_Nobel_Prize_Winners_1901_2023
       </code></pre>
     </li>
     <li>Create a virtual environment:<br>
