@@ -24,6 +24,10 @@ def decade_category_female_ratio(df: pd.DataFrame) -> pd.DataFrame:
 def multiple_winners(df: pd.DataFrame) -> pd.Series:
     """
     Return a Series of full_name counts where count > 1.
+    The returned Series has no index name to match expected test behavior.
     """
     counts = df["full_name"].value_counts()
-    return counts[counts > 1]
+    result = counts[counts > 1]
+    result.index.name = None
+    return result
+
