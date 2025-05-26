@@ -63,7 +63,7 @@ python -m pip install -r requirements.txt
       </code></pre>
     </li>
     <li>Run tests:<br>
-      <pre><code>pytest
+      <pre><code>python -m pytest
       </code></pre>
       Ensure all tests in the <code>tests/</code> directory pass.
     </li>
