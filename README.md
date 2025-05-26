@@ -11,8 +11,8 @@
   <pre><code>
 Nobel_Prize_Winners/
 ├── data/
-│   ├── raw/           # Original data files (e.g., nobel.csv)
-│   └── processed/     # Cleaned and transformed datasets
+│   └──  novel.csv        # Original data files (e.g., nobel.csv)
+│    
 ├── notebooks/         # Jupyter notebooks for EDA and prototyping
 │   └── exploratory_analysis.ipynb
 ├── src/               # Python source code
