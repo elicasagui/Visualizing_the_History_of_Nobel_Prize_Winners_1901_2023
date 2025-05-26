@@ -24,9 +24,9 @@ Nobel_Prize_Winners/
 ├── tests/             # Unit tests with pytest
 │   ├── __init__.py
 │   ├── test_load_data.py
-    ├── test_clean_data.py
-    ├── test_analyze.py
-    └── test_visualize.py
+│   ├── test_clean_data.py
+│   ├── test_analyze.py
+│   └── test_visualize.py
 ├── requirements.txt   # Project dependencies
 ├── .gitignore         # Files and directories to ignore
 └── README.html        # Project documentation (this file)
