@@ -71,7 +71,19 @@ python -m pip install -r requirements.txt
       Ensure all tests in the <code>tests/</code> directory pass.
     </li>
   </ul>
-
+  </ol>
+<h2>Streamlit Dashboard</h2>
+<p>To explore the data interactively, launch the Streamlit app:</p>
+<ol class="steps">
+  <li><strong>Activate your virtual environment</strong> (if not already active):<br>
+    <pre><code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code></pre>
+    <pre><code>.\venv\Scripts\Activate</code></pre>
+  </li>
+  <li><strong>Run the Streamlit app:</strong><br>
+    <pre><code>streamlit run src/dashboard.py</code></pre>
+  </li>
+  <li>Open your browser at <code>http://localhost:8501</code> to view the dashboard.</li>
+</ol>
   <h2>Data Pipeline</h2>
   <p>The <code>src/</code> package contains modules for each stage of the data pipeline:</p>
   <ul>
